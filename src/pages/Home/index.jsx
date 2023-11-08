@@ -28,6 +28,14 @@ const index = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [cover, setCover] = useState("");
+  const [published, setPublished] = useState("");
+  const [pages, setPages] = useState("");
+
+  const AddBooks = () => {};
   return (
     <>
       <div className="home_page">
@@ -108,7 +116,10 @@ const index = () => {
           <Box sx={style} className="rounded-lg">
             <Typography id="modal-modal-title" variant="h6" component="h2">
               <p>Create a book</p>
-              <button onClick={handleClose} className="p-1 rounded-lg hover:bg-[#00000034]">
+              <button
+                onClick={handleClose}
+                className="p-1 rounded-lg hover:bg-[#00000034]"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"
@@ -127,10 +138,12 @@ const index = () => {
               </button>
             </Typography>
 
-            <form action="" className="modal__form">
+            <form action="#" className="modal__form">
               <div>
                 <p>Title</p>
                 <TextField
+                  onChange={(e) => setTitle(e.target.value)}
+                  name="title"
                   label="Enter your title"
                   id="filled-size-small"
                   variant="filled"
@@ -138,36 +151,44 @@ const index = () => {
               </div>
 
               <div>
-                <p>Title</p>
+                <p>Author </p>
                 <TextField
-                  label="Enter your title"
+                  onChange={(e) => setAuthor(e.target.value)}
+                  name="author"
+                  label="Enter your author"
                   id="filled-size-small"
                   variant="filled"
                 />
               </div>
 
               <div>
-                <p>Title</p>
+                <p>Cover</p>
                 <TextField
-                  label="Enter your title"
+                  onChange={(e) => setCover(e.target.value)}
+                  name="cover"
+                  label="Enter your cover"
                   id="filled-size-small"
                   variant="filled"
                 />
               </div>
 
               <div>
-                <p>Title</p>
+                <p>Published</p>
                 <TextField
-                  label="Enter your title"
+                  onChange={(e) => setPublished(e.target.value)}
+                  name="published"
+                  label=" Enter your published"
                   id="filled-size-small"
                   variant="filled"
                 />
               </div>
 
               <div>
-                <p>Title</p>
+                <p>Pages </p>
                 <TextField
-                  label="Enter your title"
+                  onChange={(e) => setPages(e.target.value)}
+                  name="pages"
+                  label="Enter your pages"
                   id="filled-size-small"
                   variant="filled"
                 />
@@ -175,7 +196,9 @@ const index = () => {
 
               <div className="btns">
                 <Button className="close">Close</Button>
-                <Button className="submit">Submit</Button>
+                <Button onClick={() => AddBooks()} className="submit">
+                  Submit
+                </Button>
               </div>
             </form>
           </Box>
