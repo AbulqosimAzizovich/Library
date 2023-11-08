@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+}
+
+body {
+  background-image: url("./assets/images/jpg/bg.jpg");
+  background-repeat: no-repeat;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@font-face {
+  font-family: Mulish-Regular;
+  src: url("./assets/fonts/Mulish/static/Mulish-Regular.ttf");
+}
+
+@font-face {
+  font-family: Mulish-Medium;
+  src: url("./assets/fonts/Mulish/static/Mulish-Medium.ttf");
+}
+
+@font-face {
+  font-family: Mulish-Semibold;
+  src: url("./assets/fonts/Mulish/static/Mulish-Semibold.ttf");
+}
+
+@font-face {
+  font-family: Mulish-Light;
+  src: url("./assets/fonts/Mulish/static/Mulish-Light.ttf");
+}
+
+@font-face {
+  font-family: Mulish-Bold;
+  src: url("./assets/fonts/Mulish/static/Mulish-Bold.ttf");
+}
+
+@font-face {
+  font-family: Montserrat-Semibold;
+  src: url("./assets/fonts/Montserrat/static/Montserrat-SemiBold.ttf");
+}
