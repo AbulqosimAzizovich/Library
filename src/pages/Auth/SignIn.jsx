@@ -13,28 +13,28 @@ const SignIn = () => {
           </p>
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <div className="flex flex-col gap-4">
-              <div className="flex items-center justify-center gap-4 px-6 py-[10px] rounded border-[1px] border-[#000]">
+              <div className="cursor-pointer flex items-center justify-center gap-4 px-6 py-[10px] rounded border-[1px] border-[#000]">
                 <img src={Google} alt="Google" />
                 <p>Continue with Google</p>
               </div>
-              <div className="flex items-center justify-center gap-4 px-6 py-[10px] rounded border-[1px] border-[#000]">
+              <div className=" cursor-pointer flex items-center justify-center gap-4 px-6 py-[10px] rounded border-[1px] border-[#000]">
                 <img src={Facebook} alt="Facebook" />
                 <p>Continue with Facebook</p>
               </div>
             </div>
             <p className=" text-center border-y">OR</p>
-            
+
             <form className="space-y-4 md:space-y-6" action="#">
               <div>
                 <label
-                  for="email"
+                  for="text"
                   className="block mb-2 text-sm font-medium text-gray-900 "
                 >
-                  Your email
+                  Your name
                 </label>
                 <input
-                  type="email"
-                  name="email"
+                  type="text"
+                  name="text"
                   id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                   placeholder="name@company.com"
@@ -119,4 +119,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-

@@ -1,17 +1,16 @@
 import "./style.scss";
 
-const Card = () => {
+const Card = ({ title, author, pages, published, cover }) => {
   return (
     <div className="card">
-      <h2>Raspberry Pi User Guide</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur. Nulla adipiscing neque varius
-        vestibulum magna in. Tortor quisque nisl congue ut tellus sem id.
-      </p>
+      <h2>{title}</h2>
+      <p>{cover}</p>
 
       <div className="about__card">
-        <p>Eben Upton: 2012-year</p>
-        <span>211 pages</span>
+        <p>
+          {author}: {published}-year
+        </p>
+        <span>{pages} pages</span>
       </div>
     </div>
   );

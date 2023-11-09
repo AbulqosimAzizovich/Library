@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "../../assets/images/png/Logo.png";
 import Search from "../../assets/images/png/search.png";
 import Bell from "../../assets/images/png/bell.png";
@@ -26,9 +26,13 @@ const style = {
 };
 
 const index = () => {
+  const { getBooks, addBooks } = useBooksApi;
+  const toast = useRef(null);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [book, setBook] = useState([]);
 
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -36,8 +40,40 @@ const index = () => {
   const [published, setPublished] = useState("");
   const [pages, setPages] = useState("");
 
+  const [resSearch, setResSearch] = useState("");
 
-  const AddBooks = () => {};
+  const AddBooks = async () => {
+    try {
+      const res = await addBooks({
+        title: title,
+        cover: cover,
+        author: author,
+        published: published,
+        pages: pages,
+      });
+      setBook([...book, res.data]);
+      setTitle("");
+      setAuthor("");
+      setCover("");
+      setPublished("");
+      setPages("");
+    } catch (error) {}
+  };
+
+  const getAllBooks = async () => {
+    try {
+      const response = await getBooks();
+      setBook(response.data);
+    } catch (err) {}
+  };
+
+  const filteredBooks = book.filter((e) =>
+    e?.title.toLowerCase().includes(resSearch.toLowerCase())
+  );
+
+  useEffect(() => {
+    getAllBooks();
+  }, []);
   return (
     <>
       <div className="home_page">
@@ -56,6 +92,9 @@ const index = () => {
                 <input
                   type="text"
                   placeholder="Search for any training you want"
+                  onChange={(e) => {
+                    setResSearch(e.target.value);
+                  }}
                 />
               </div>
             </div>
@@ -105,9 +144,18 @@ const index = () => {
           </div>
 
           <div className="cards">
-            {"13211".split("").map(() => {
-              return <Card />;
-            })}
+            {book?.length &&
+              book?.map((e) => {
+                return (
+                  <Card
+                    title={e.title}
+                    author={e.author}
+                    cover={e.cover}
+                    published={e.published}
+                    pages={e.pages}
+                  />
+                );
+              })}
           </div>
         </div>
       </div>
@@ -198,7 +246,13 @@ const index = () => {
 
               <div className="btns">
                 <Button className="close">Close</Button>
-                <Button onClick={() => AddBooks()} className="submit">
+                <Button
+                  onClick={() => {
+                    AddBooks();
+                    handleClose();
+                  }}
+                  className="submit"
+                >
                   Submit
                 </Button>
               </div>
